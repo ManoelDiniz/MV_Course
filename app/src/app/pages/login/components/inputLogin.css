@@ -1,0 +1,102 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #1b1f27
+  }
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color:rgb(45deg, blue,#201b2c) ;
+    width: 100%;
+    height: 100%;
+    flex-direction: initial;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  input {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: 100;
+    border-radius: 30px;
+    outline: none;
+    border: none;
+    margin-bottom: 10px; 
+    background-color: #252a34;
+  }
+  
+  .input-pass {
+    margin-top: 10px; /* Adiciona espaço acima do campo de senha */
+  }
+  
+  
+  .Left-login{
+    transform: translate(-400px,-200px);
+  }
+  button{
+    width: 150px;
+    border-radius: 50px;
+    height: 25px;
+    border: none;
+    padding: 5px;
+    margin-top: 10px;
+    background-color: rgb(37, 37, 103);
+    color: white;
+    cursor: pointer;
+  }
+  button:hover{
+    background-color: darkblue;
+  }
+  .input-group{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #181920 ; 
+    padding: 100px;
+     
+    border-radius: 15px;
+    position: absolute;
+    transform: translate(99%, -70%);
+  }
+  label{
+    margin-bottom: 5px;
+    font-size: bold;
+  }
+  .Button-register{
+    margin-top: 10px;
+    transform: translate(5%);
+    
+    
+  }
+  .Button-register > button {
+    transform: translate(45%, 100%);
+  }
+  .Button-register > h3{
+    transform: translate(5%, 40px);
+    font-size: 15px;
+  }
+  .input-group > img {
+    
+    transform: translate(9%,-15%);
+  }
+  .input-group > button {
+    transform: translate(10%);
+    width: 70%;
+  }
+  .Left-login{
+    font-size: large;
+    transform: translate(-35%);
+    color: white;
+  }

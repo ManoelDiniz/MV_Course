@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Logout, useUsuarioLogado  } from "../../shared/hoocks";
+import { Logout } from "../../shared/hoocks";
 
 
 
