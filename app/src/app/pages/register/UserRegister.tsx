@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { InputRegister } from "./components/InputUserRegister"
 import './components/UserRegister.css'
+import mvCourseImage from './components/Mv_course.png'
 
 export const Register = () => {
   const [ Login, setLogin ] = useState('')
@@ -10,7 +11,9 @@ export const Register = () => {
   return(
     <body>
       <div className="input-register">
-      <h1>Bem vindo a tela de registo</h1>
+        <img src={mvCourseImage} alt="MV Course" />
+        
+        <h1>Tela de Cadastro</h1>
         <div className="Input-register2">
           < InputRegister 
           placehoder ='Nome do usuario   '
