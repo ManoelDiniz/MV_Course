@@ -4,22 +4,42 @@ import { ButtonLogin } from './components/ButtonLogin';
 import './components/inputLogin.css';
 import mvCourseImage from './Mv_course.png';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+import { Api } from '../../shared/services/api/ApiConfig';
+
 
 export const Login = () => {
   const inputPasswordRef = useRef<HTMLInputElement>(null);
-  const [email, setEmail] = useState('');
+  const [login, setlogin] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const HanddleEntrar = useCallback(() => {
-    console.log(password);
-    console.log(email);
-  }, [password, email]);
+  const HanddleLogin = useCallback(() => {
+    const data = {
+      login: login,
+      password: password
+    };
+  
+    Api().post('/login', data)
+      .then((Response) => {
+        if (Response.data.success) {
+          console.log('Login bem-sucedido');
+        } else {
+          console.log('Login Falhou');
+        }
+      })
+      .catch((error) => {
+        console.error('Erro ao fazer login:', error);
+      });
+  }, [login, password]);
+  
   const HaddleRegister = () =>{
     return(
       navigate('/register')
     )
   }
+  console.log(login)
+  console.log(password)
   return (
     <body>
       <div className="container">
@@ -32,8 +52,8 @@ export const Login = () => {
             <img src={mvCourseImage} alt="MV Course" />
             <InputLogin
               label="Login      "
-              value={email}
-              onChange={(newValue) => setEmail(newValue)}
+              value={login}
+              onChange={(newValue) => setlogin(newValue)}
               onPressEnter={() => inputPasswordRef.current?.focus()}
               className="input-login"
             />
@@ -45,7 +65,7 @@ export const Login = () => {
               className="input-pass"
               ref={inputPasswordRef}
             />
-            <ButtonLogin type="button" onClick={HanddleEntrar}>
+            <ButtonLogin type="button" onClick={HanddleLogin}>
             Entrar
             </ButtonLogin>
             <div className='Button-register'>
