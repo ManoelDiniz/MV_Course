@@ -1,14 +1,38 @@
-import { useState } from "react"
+import { useCallback, useState } from "react"
 import { InputRegister } from "./components/InputUserRegister"
 import './components/UserRegister.css'
 import mvCourseImage from './components/Mv_course.png'
+import { Api } from "../../shared/services/api/ApiConfig"
+import { useNavigate } from "react-router-dom"
+
 
 export const Register = () => {
   const [ Login, setLogin ] = useState('')
   const [ Name_user, setName_user ] = useState('')
-  const [ Senha, setPass ] = useState('')
-  const [ CPF, setCPf ] = useState('')
+  const [ Senha, setPass ] = useState('')  
   const [ Email, setEmail ] = useState('')
+  const navigator = useNavigate()
+  
+  
+  const HanddleRegister = useCallback(()=>{
+    const data ={
+      login: Login,
+      password: Senha,
+      name_user: Name_user,
+      email_user: Email
+    }
+    Api().post('/register', data)
+      .then((Response) => {
+        if (Response.data) {
+        alert('Registro Feito com sucesso')
+        navigator('/login')
+      }      
+    })
+    .catch((error) => {
+      alert('Erro ao fazer o registro: Email Ja cadastrado');
+    });
+  },[Login,Senha,Name_user,Email, navigator])
+
   return(
     <body>
       <div className="input-register">
@@ -35,16 +59,7 @@ export const Register = () => {
             type="password"
             onChange={(newValue) =>setPass(newValue)}
             className='InputRegister'
-            />
-            
-            < InputRegister 
-            placehoder ='CPF  '
-            value= {CPF}
-            type="number"
-            onChange={(newValue) =>setCPf(newValue)}
-            className='InputRegister'
-            />
-            
+            />            
             < InputRegister 
             placehoder ='Email  '
             value= {Email}
@@ -54,7 +69,9 @@ export const Register = () => {
         </div>
         
         <h3> Por favor Preencha todos os campos </h3>
-        <button>Registrar</button>
+        <button
+        onClick={HanddleRegister}
+        >Registrar</button>
 
       </div>
     </body>
