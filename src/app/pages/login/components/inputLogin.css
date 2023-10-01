@@ -20,7 +20,8 @@ body {
   }
   
   .input-group {
-    display: flex;
+    display: block;
+    position: absolute;
     flex-direction: column;
     align-items: center;
   }
@@ -99,4 +100,25 @@ body {
     font-size: large;
     transform: translate(-35%);
     color: white;
+  }
+  .oculto{
+    top: 75%;
+    transform: translate(10%);
+    color: red;
+    display: none;
+    position: absolute;
+  }
+  .ocultoLogin{
+    top: 75%;
+    transform: translate(10%);
+    color: red;
+    display: none;
+    position: absolute;
+  }
+  .ocultoPass{
+    top: 75%;
+    transform: translate(10%);
+    color: red;
+    display: none;
+    position: absolute;
   }

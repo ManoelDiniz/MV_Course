@@ -13,25 +13,32 @@ export const Login = () => {
   const [login, setlogin] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  function exibirMensagemErro(){
+    const messageerror = document.getElementById('messageError')
+    if(messageerror){
+      messageerror.style.display ='block'
+    }
+    }
+  
+  
 
   const HanddleLogin = useCallback(() => {
     const data = {
       login: login,
       password: password
     };
+    
   
     Api().post('/login', data)
       .then((Response) => {
-        if (Response.data.success) {
-          console.log('Login bem-sucedido');
-        } else {
-          console.log('Login Falhou');
-        }
+        if (Response.data) {          
+          navigate('/pagina-inicial')
+        } 
       })
       .catch((error) => {
-        console.error('Erro ao fazer login:', error);
+        exibirMensagemErro()
       });
-  }, [login, password]);
+  }, [login, password, navigate]);
   
   const HaddleRegister = () =>{
     return(
@@ -75,6 +82,23 @@ export const Login = () => {
                   Cadastrar
               </ButtonLogin>
             </div>
+            <label  
+            id="messageError"
+            className="oculto"
+            >
+              Usuario ou senha incorreto
+            </label>
+            <label
+            id='userNull'
+            className="ocultoLogin">
+              Por favor insira seu usuario
+            </label>
+            <label
+            id='passNull'
+            className='ocultoPass'
+            >
+            Por favor insira sua senha 
+            </label>
             
           </div>
 
