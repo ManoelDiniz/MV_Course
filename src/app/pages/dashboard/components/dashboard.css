@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #1b1f27;
+    
+    
+}
+.Options{
+    background-color: black;    
+    top: 15%;
+    right: 15%;
+    width: 100%; 
+    height: 100px;
+    }
+    
+.Reload {  
+    margin-right: 12px;
+    right: -10%;
+    top: -50px;
+    width: 15%;
+    
+    color: white;
+    position: relative;
+    font-family:OpenSans,Arial,sans-serif ;
+    text-decoration: none;    
+}
+.Reload:hover {
+    color: darkblue;
+  }
+img{
+    width: 100px;
+}
+.Bell{
+    right: -65%;
+    top:-80px;
+    position: relative;
+    cursor: pointer;
+    width: 1%;
+}
+.Bell:hover{
+    color: white;
+}
+.Notification {
+    position: absolute;
+    top: 60px;
+    right: 23%;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 9999; 
+    border-radius: 15px;
+    border: none;
+    background-image: linear-gradient(180deg,gray,white);
+
+  }
+  
+  .Notification p {
+    margin: 0;
+   
+  }
+  
+  .Notification button {
+    margin-top: 10px;
+  }
+  

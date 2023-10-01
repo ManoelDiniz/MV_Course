@@ -1,16 +1,60 @@
-import { Link } from "react-router-dom";
-import { Logout } from "../../shared/hoocks";
+import React, { useState } from "react";
+import { Link, Outlet } from "react-router-dom";
+import './components/dashboard.css'
+import mvCourseImage from './Mv_course.png';
+import { FaBell } from "react-icons/fa"
 
+export const Dashboard: React.FC = () => {
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
+  const handleNotificationClick = () => {
+    setIsNotificationOpen(!isNotificationOpen);
+  };
 
-export const Dashboard = () => {
- 
   return (
-    <div>
-        <p>Dashboard</p>   
+    <body>
+      <div className="Options">
+          <nav>
+              <img src={mvCourseImage} alt="MV Course" />
+              <Link to='/pagina-inicial' className="Reload">
+                Pagina Inicial
+              </Link >
+                
+                 
+              <Link to='/pagina-inicial'  className="Reload">
+                Cursos
+              </Link > 
+              <Link to='/pagina-inicial'  className="Reload">
+                Artigos
+              </Link> 
+
+              <Link to='/pagina-inicial'  className="Reload">
+                Divulgações
+              </Link >      
+              <Link to='/pagina-inicial'  className="Reload">
+                Configurações
+              </Link >    
+              <Link to='/login' className="Reload">
+                Logout
+              </Link >
+              
+          </nav>
+        <Outlet />
+        <div className="Bell" onClick={handleNotificationClick}>
+          <FaBell size={32} color="blue" />
+        </div>
         
-        <Link to={'/login'}> Login</Link>  
-         <Logout />
-    </div>     
-     );
-}
+      </div>
+
+      
+      {isNotificationOpen && (
+        <div className="Notification">
+          {/* Conteúdo da notificação */}
+          <p>Você tem uma nova notificação!</p>
+          <button onClick={handleNotificationClick}>Fechar</button>
+        </div>
+      )}
+     
+    </body>
+  );
+};
