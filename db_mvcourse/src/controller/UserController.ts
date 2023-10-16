@@ -18,7 +18,7 @@ export class UserController {
             const saltRounds = 10;
             const hashPassword = await bcrypt.hash(password, saltRounds);
             console.log(hashPassword)
-            // Crie um novo usuário
+            
             const newUser = userRepository.create({
                 login,
                 password: hashPassword,
@@ -26,10 +26,10 @@ export class UserController {
                 email_user
             });
 
-            // Salve o novo usuário no banco de dados
+            
             await userRepository.save(newUser);
 
-            // Remova a senha do objeto de resposta
+           
             const { password: __, ...user } = newUser;
 
             return res.status(201).json(user);

@@ -4,7 +4,6 @@ import { ButtonLogin } from './components/ButtonLogin';
 import './components/inputLogin.css';
 import mvCourseImage from './Mv_course.png';
 import { useNavigate } from 'react-router-dom';
-import axios from "axios";
 import { Api } from '../../shared/services/api/ApiConfig';
 
 
