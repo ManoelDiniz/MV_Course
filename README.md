@@ -1,7 +1,10 @@
 # MV_Course
 
 Este é o repositório do projeto MV_Course. Aqui estão as instruções para configurar o ambiente de desenvolvimento e clonar este repositório.
-
+Configurar chave SSH no github
+Clonar o repositorio
+    git clone git@github.com:ManoelDiniz/MV_Course.git
+    
 ## Dependências
 
 Certifique-se de que você tem as seguintes dependências instaladas no seu ambiente de desenvolvimento:
@@ -41,8 +44,7 @@ Aqui estão as dependências listadas no arquivo `package.json`:
     "typescript": "^4.9.5"
   }
 }
-Clonar o repositorio
-git clone git@github.com:ManoelDiniz/MV_Course.git
+
 
 Executando o projeto 
 npm install # Para instalar as dependências
