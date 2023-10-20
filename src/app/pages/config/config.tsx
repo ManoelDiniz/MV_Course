@@ -9,6 +9,7 @@ export const ConfigUser: React.FC = () => {
     return (
         
     <body>
+    {/* teste */}
         <InputAlterUser
         placehoder="Sua senha"
         type="password"
