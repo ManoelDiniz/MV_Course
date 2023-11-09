@@ -1,74 +1,41 @@
-import React, {  useState, } from "react";
-import { Link, Outlet } from "react-router-dom";
-import './components/dashboard.css'
-import mvCourseImage from './Mv_course.png';
-import { FaBell, FaUser  } from "react-icons/fa"
-
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import image from '../../images/971.png'
+import { Header } from "../../components/Header";
+import {Container, TextContent, Title, TitleHighlight} from './style'
+import Button from "../../components/button";
+import './style.css'
 
 export const Dashboard: React.FC = () => {
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
-  const [isConfignOpen, setIsConfigOpen] = useState(false)
+  const history = useNavigate();
 
-  
-
-  const handleConfigClick = () => {
-    setIsConfigOpen(!isConfignOpen);
-  }
-
-  const handleNotificationClick = () => {
-    setIsNotificationOpen(!isNotificationOpen);
+  const handleStartNowClick = () => {
+    // Redireciona para a tela de login
+    history("/login");
   };
 
-  
-
   return (
-    <body>
-      <div className="Options">
-        <nav>
-          <img src={mvCourseImage} alt="MV Course" />
-          <Link to='/pagina-inicial' className="Reload">
-            Pagina Inicial
-          </Link>
-          <Link to='/pagina-inicial' className="Reload">
-            Cursos
-          </Link>
-          <Link to='/pagina-inicial' className="Reload">
-            Artigos
-          </Link>
-          <Link to='/pagina-inicial' className="Reload">
-            Divulgações
-          </Link>
-          <Link to='/pagina-inicial' className="Reload">
-            Configurações
-          </Link>
-          
-        </nav>
-        <Outlet />
-        <div className="Bell" onClick={handleNotificationClick}>
-          <FaBell size={32} color="blue" />
+    <>
+      <Header />
+      <Container>
+        <div className="Form-Container">
+          <Title>
+            <TitleHighlight>
+            Transforme seu potencial em realidade agora mesmo. 
+            <br/>
+            Desperte o global que há em você
+            </TitleHighlight>
+          </Title>
+          <TextContent>
+            Venha aprender utilizando as tecnologias utilizadas pelas empresas mais inovadoras do mundo.
+          </TextContent>
+          <Button title="Começar agora" variant="secondary" onClick={handleStartNowClick} />
         </div>
-        <div className="config">
-          <FaUser size={32} color='blue' onClick={handleConfigClick} />
-        </div>
-      </div>
 
-      {isNotificationOpen && (
-        <div className="Notification">
-          <p>Você tem uma nova notificação!</p>
-          <button onClick={handleNotificationClick}>Fechar</button>
+        <div>
+          <img src={image} alt="Imagem principal" className="ImageP" />
         </div>
-      )}
-      {isConfignOpen && (
-        <div className="Config">
-          
-          <Link to='/config' className="configuration">
-            Configuração
-          </Link>
-          <Link to='/login' className="configuration">
-            Logout
-          </Link>
-        </div>
-      )}
-    </body>
+      </Container>
+    </>
   );
 };
