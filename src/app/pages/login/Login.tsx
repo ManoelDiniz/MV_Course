@@ -1,17 +1,38 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { MdLock, MdEmail } from 'react-icons/md';
 import { Header } from "../../components/Header";
 import { Container, Title, CriarText, EsqueciText, Row, SubtitleLogin, TitleLogin, Wrapper } from './style';
 import Button from "../../components/button";
 import { Input } from "../../components/Input";
 import './style.css'
+import { Api } from "../../shared/services/api/ApiConfig"
 import { useNavigate } from "react-router-dom";
 
 export const Login: React.FC = () => {
-  const navigate = useNavigate()
+  const [ Login, setLogin ] = useState('')
+  const [ Senha, setPass ] = useState('')  
+  const navigator = useNavigate()
   const HaddleCreateUser = () => {
-    navigate('/register')
+    navigator('/register')
   }
+  const HanddleLogin = useCallback(()=>{
+    const data ={
+      login: Login,
+      password: Senha,
+      
+    }
+    Api().post('/login', data)
+      .then((Response) => {
+        if (Response.data) {
+          console.log("passa por aqui")
+          navigator('/feed')
+      }      
+    })
+    .catch((error) => {
+      console.log("passou aqui 003")
+      alert('Login ou senha incorreto');
+    });
+  },[Login,Senha, navigator])
   return (
     <>
       <Header />
@@ -28,9 +49,13 @@ export const Login: React.FC = () => {
               <TitleLogin> Faça seu cadastro</TitleLogin>
               <SubtitleLogin>Faça seu login e make the change._</SubtitleLogin>
               <form>
-                <Input placeholder='Email' leftIcon={<MdEmail className="icons" />} />
-                <Input placeholder='Senha' type="password" leftIcon={<MdLock className="icons"/>} />
-                <Button title="Entrar" variant="secondary"/>
+                <Input 
+                placeholder='Email' 
+                leftIcon={<MdEmail className="icons" />}
+                onChange={(newValue) =>setLogin(newValue)}
+                 />
+                <Input onChange={(newValue) =>setPass(newValue)} placeholder='Senha' type="password" leftIcon={<MdLock className="icons"/>} />
+                <Button title="Entrar" onClick={HanddleLogin} variant="secondary"/>
 
               </form>
               <Row>

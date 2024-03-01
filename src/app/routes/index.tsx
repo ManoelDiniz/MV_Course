@@ -18,7 +18,8 @@ const Router = () => {
         <Route path="/register" element={ <Register /> } />
         <Route path="/feed" element={<Feed/>} />
 
-        <Route path="*" Component={() => <Navigate to="/pagina-inicial" />} />
+        <Route path="*" element={<Navigate to="/pagina-inicial" />} />
+
         <Route path='/config' element={<ConfigUser />} />
       </Routes>
     </BrowserRouter>

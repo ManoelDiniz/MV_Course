@@ -22,6 +22,7 @@ class AuthUserServices {
             const payload = {
                 userId: user.id
             }
+            console.log("Passou aqui")
            const hash = crypto.randomBytes(32).toString('hex')
            const token = jwt.sign(payload, hash, {expiresIn:'2h'})
 
