@@ -12,7 +12,7 @@ class AuthUser {
 
         const result = await authUser.AuthUser(login,password,res)
         if(result){
-           return res.status(200).json({message:'Usuario logado com sucesso'})
+           return res.status(200).json( result.token )
         } else{
             return res.status(500).json({message:'Usuario ou senha Incorreta!'})
         }

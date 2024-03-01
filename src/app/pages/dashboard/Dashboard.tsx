@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 import './components/dashboard.css'
@@ -6,10 +7,20 @@ import { FaBell } from "react-icons/fa"
 import Programacao from './components/programacao.jpeg';
 import Programacao02 from './components/programacao02.jpeg';
 import Programação03 from './components/programacao03.jpeg'
+=======
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import image from '../../images/971.png'
+import { Header } from "../../components/Header";
+import {Container, TextContent, Title, TitleHighlight} from './style'
+import Button from "../../components/button";
+import './style.css'
+>>>>>>> 8c823f2c605e4f0aec88d4b4eb50d1d5c20dfb0a
 
 export const Dashboard: React.FC = () => {
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
+  const history = useNavigate();
 
+<<<<<<< HEAD
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const images = [
@@ -20,6 +31,11 @@ export const Dashboard: React.FC = () => {
 
   const handleNotificationClick = () => {
     setIsNotificationOpen(!isNotificationOpen);
+=======
+  const handleStartNowClick = () => {
+    // Redireciona para a tela de login
+    history("/login");
+>>>>>>> 8c823f2c605e4f0aec88d4b4eb50d1d5c20dfb0a
   };
 
   const handleNextImage = () => {
@@ -32,6 +48,7 @@ export const Dashboard: React.FC = () => {
     );
   };
   return (
+<<<<<<< HEAD
     <body>
       <img src={images[currentImageIndex]} alt="MV Course" className="ProgramacaoPhoto" />
       <div className="Options">
@@ -78,9 +95,29 @@ export const Dashboard: React.FC = () => {
           
           <p>Você tem uma nova notificação!</p>
           <button onClick={handleNotificationClick}>Fechar</button>
+=======
+    <>
+      <Header />
+      <Container>
+        <div className="Form-Container">
+          <Title>
+            <TitleHighlight>
+            Transforme seu potencial em realidade agora mesmo. 
+            <br/>
+            Desperte o global que há em você
+            </TitleHighlight>
+          </Title>
+          <TextContent>
+            Venha aprender utilizando as tecnologias utilizadas pelas empresas mais inovadoras do mundo.
+          </TextContent>
+          <Button title="Começar agora" variant="secondary" onClick={handleStartNowClick} />
         </div>
-      )}
-     
-    </body>
+
+        <div>
+          <img src={image} alt="Imagem principal" className="ImageP" />
+>>>>>>> 8c823f2c605e4f0aec88d4b4eb50d1d5c20dfb0a
+        </div>
+      </Container>
+    </>
   );
 };
