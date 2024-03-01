@@ -124,3 +124,12 @@ body {
     display: none;
     position: absolute;
   }
+  @media screen and (max-width: 768px) {
+    .input-group {
+      max-width: 100%;
+    }
+    
+    .container {
+      padding: 10px;
+    }
+  }
